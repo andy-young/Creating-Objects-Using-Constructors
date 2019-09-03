@@ -8,11 +8,37 @@
   <title>Cars</title>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="index.js"></script>
   <link rel="stylesheet" href="index.css" type="text/css" />
 </head>
 
 <body>
+  <script>
+    // Create the Car Constructor Function
+    function Car(x, y) {
+      this.x;
+      this.y;
+    }
+
+    function drawCar(car) {
+      const carHtml = '<img src="http://nostarch.com/images/car.png">';
+      const carElement = $(carHtml);
+
+      carElement.css({
+        position: 'absolute',
+        left: car.x,
+        top: car.y
+      });
+
+      $('body').append(carElement);
+    }
+
+    const tesla = new Car(20, 20);
+    const nissan = new Car(100, 200);
+
+    drawCar(tesla);
+    drawCar(nissan);
+
+  </script>
 </body>
 
 </html>
