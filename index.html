@@ -15,28 +15,35 @@
   <script>
     // Create the Car Constructor Function
     function Car(x, y) {
-      this.x;
-      this.y;
+      this.x = x;
+      this.y = y;
+      this.draw();
     }
 
-    function drawCar(car) {
+    Car.prototype.draw = function () {
       const carHtml = '<img src="http://nostarch.com/images/car.png">';
-      const carElement = $(carHtml);
 
-      carElement.css({
+      this.carElement = $(carHtml);
+
+      this.carElement.css({
         position: 'absolute',
-        left: car.x,
-        top: car.y
+        left: this.x,
+        top: this.y
       });
 
-      $('body').append(carElement);
-    }
+      $('body').append(this.carElement);
+    };
+
+    Car.prototype.moveRight = function () {
+      this.x += 5;
+      this.carElement.css({
+        left: this.x,
+        top: this.y
+      });
+    };
 
     const tesla = new Car(20, 20);
     const nissan = new Car(100, 200);
-
-    drawCar(tesla);
-    drawCar(nissan);
 
   </script>
 </body>
